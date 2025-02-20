@@ -1,10 +1,10 @@
-package ru.IT.repository;
+package ru.T.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
-import ru.IT.entity.Author;
+import ru.T.entity.Author;
 
 import java.util.Optional;
 

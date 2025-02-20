@@ -1,6 +1,6 @@
-package ru.IT.services;
+package ru.T.services;
 
-import ru.IT.DTO.BookDTO;
+import ru.T.DTO.BookDTO;
 
 public interface BookService {
     BookDTO getBookById (Long id);

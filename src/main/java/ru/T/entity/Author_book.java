@@ -1,4 +1,4 @@
-package ru.IT.entity;
+package ru.T.entity;
 
 public class Author_book {
 }

@@ -1,30 +1,32 @@
-package ru.IT.services;
+package ru.T.services;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-import ru.IT.DTO.AuthorDTO;
-import ru.IT.DTO.BookDTO;
-import ru.IT.DTO.GenreDTO;
-import ru.IT.entity.Genre;
-import ru.IT.repository.GenreRepository;
-
+import ru.T.DTO.AuthorDTO;
+import ru.T.DTO.BookDTO;
+import ru.T.DTO.GenreDTO;
+import ru.T.entity.Genre;
+import ru.T.repository.GenreRepository;
 import java.util.List;
 import java.util.stream.Collectors;
 
-
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class GenreServiceImpl implements GenreService {
 
     private final GenreRepository genreRepository;
 
     public Genre addNewGenre(Genre genre) {
+        log.info("добавили новый жанр");
         return genreRepository.save(genre);
     }
 
-   @Override
+    @Override
     public GenreDTO getGenreById(Long id) {
         Genre genre = genreRepository.findById(id).orElseThrow();
+        log.info("нашли жанр по id");
         return convertToDTO(genre);
     }
 
@@ -44,6 +46,7 @@ public class GenreServiceImpl implements GenreService {
                                 .collect(Collectors.toList()))
                         .build())
                 .collect(Collectors.toList());
+        log.info("список книгДТО");
 
         return GenreDTO.builder()
                 .books(bookDtoList)
@@ -51,5 +54,4 @@ public class GenreServiceImpl implements GenreService {
                 .name(genre.getName())
                 .build();
     }
-
 }

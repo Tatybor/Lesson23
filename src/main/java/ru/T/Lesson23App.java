@@ -1,13 +1,10 @@
 package ru.T;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-/**
- * Hello world!
- *
- */
-public class App 
-{
-    public static void main( String[] args )
-    {
-        System.out.println( "Hello World!" );
+@SpringBootApplication
+public class Lesson23App {
+    public static void main(String[] args) {
+        SpringApplication.run(Lesson23App.class, args);
     }
 }

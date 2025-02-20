@@ -1,4 +1,4 @@
-package ru.IT.security;
+package ru.T.security;
 
 public enum Role {
     ADMIN,

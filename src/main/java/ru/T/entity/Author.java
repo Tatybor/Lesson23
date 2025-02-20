@@ -1,6 +1,7 @@
-package ru.IT.entity;
+package ru.T.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 
 import java.util.Set;
@@ -20,9 +21,11 @@ public class Author {
     private Long id;
 
     @Column(nullable = false)
+    @NotBlank(message = "введите имя")
     private String name;
 
     @Column(nullable = false)
+    @NotBlank(message = "введите фамилию")
     private String surname;
 
    @ManyToMany (mappedBy = "authors")

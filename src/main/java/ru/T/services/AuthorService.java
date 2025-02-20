@@ -1,6 +1,6 @@
-package ru.IT.services;
+package ru.T.services;
 
-import ru.IT.DTO.AuthorDTO;
+import ru.T.DTO.AuthorDTO;
 
 import java.util.List;
 

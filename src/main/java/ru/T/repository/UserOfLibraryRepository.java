@@ -1,8 +1,7 @@
-package ru.IT.repository;
+package ru.T.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import ru.IT.entity.Book;
-import ru.IT.entity.UserOfLibrary;
+import ru.T.entity.UserOfLibrary;
 
 public interface UserOfLibraryRepository extends JpaRepository<UserOfLibrary, Long> {
 public UserOfLibrary findUserOfLibraryByEmail(String email);

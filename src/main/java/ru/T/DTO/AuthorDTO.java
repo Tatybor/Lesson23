@@ -1,5 +1,6 @@
-package ru.IT.DTO;
+package ru.T.DTO;
 
+import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -15,6 +16,5 @@ public class AuthorDTO {
     private Long id;
     private String name;
     private String surname;
-
-   private List<BookDTO> books;
+    private List<BookDTO> books;
 }

@@ -1,5 +1,7 @@
-package ru.IT.DTO;
+package ru.T.DTO;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -14,9 +16,11 @@ import java.util.List;
 public class BookDTO {
 
     private Long id;
+    @NotBlank(message = "введите название книги")
     private String name;
-   private String genre;
-   private List <AuthorDTO> authors;
+    @Size(min = 3,max = 15)
+    private String genre;
+    private List<AuthorDTO> authors;
 
 }
 

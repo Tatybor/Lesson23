@@ -1,28 +1,18 @@
-package ru.IT.services;
+package ru.T.services;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import jakarta.persistence.criteria.CriteriaBuilder;
-import jakarta.persistence.criteria.CriteriaQuery;
-import jakarta.persistence.criteria.Predicate;
-import jakarta.persistence.criteria.Root;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.domain.Specification;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import ru.IT.DTO.AuthorDTO;
-import ru.IT.DTO.BookDTO;
-import ru.IT.DTO.UserOfLibraryDTO;
-import ru.IT.entity.Author;
-import ru.IT.entity.UserOfLibrary;
-import ru.IT.repository.AuthorRepository;
-import ru.IT.repository.UserOfLibraryRepository;
-
-import java.util.List;
-import java.util.stream.Collectors;
+import ru.T.DTO.UserOfLibraryDTO;
+import ru.T.entity.UserOfLibrary;
+import ru.T.repository.UserOfLibraryRepository;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class UserOfLibraryServiceImpl implements UserOfLibraryService {
     @Autowired
     UserOfLibraryRepository userOfLibraryRepository;
@@ -30,13 +20,14 @@ public class UserOfLibraryServiceImpl implements UserOfLibraryService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-public UserOfLibraryDTO addNewUser(UserOfLibrary userOfLibrary){
-    String passwordEncode = passwordEncoder.encode(userOfLibrary.getPassword());
-    userOfLibrary.setPassword(passwordEncode);
-    UserOfLibrary newUserOfLibrary = userOfLibraryRepository.save(userOfLibrary);
-    UserOfLibraryDTO userOfLibraryDTO = new ObjectMapper(). convertValue(newUserOfLibrary, UserOfLibraryDTO.class);
-    return userOfLibraryDTO;
-}
+    public UserOfLibraryDTO addNewUser(UserOfLibrary userOfLibrary) {
+        String passwordEncode = passwordEncoder.encode(userOfLibrary.getPassword());
+        userOfLibrary.setPassword(passwordEncode);
+        UserOfLibrary newUserOfLibrary = userOfLibraryRepository.save(userOfLibrary);
+        UserOfLibraryDTO userOfLibraryDTO = new ObjectMapper().convertValue(newUserOfLibrary, UserOfLibraryDTO.class);
+        log.info("добавили нового юзера через ДТО");
+        return userOfLibraryDTO;
+    }
 
 
 

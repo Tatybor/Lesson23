@@ -1,31 +1,34 @@
-package ru.IT.services;
+package ru.T.services;
 
 import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.CriteriaQuery;
 import jakarta.persistence.criteria.Predicate;
 import jakarta.persistence.criteria.Root;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
-import ru.IT.DTO.AuthorDTO;
-import ru.IT.DTO.BookDTO;
-import ru.IT.entity.Author;
-import ru.IT.repository.AuthorRepository;
+import ru.T.DTO.AuthorDTO;
+import ru.T.DTO.BookDTO;
+import ru.T.entity.Author;
+import ru.T.repository.AuthorRepository;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class AuthorServiceImpl implements AuthorService {
 
     private final AuthorRepository authorRepository;
 
     @Override
     public List<AuthorDTO> getAllAuthors() {
-        List <Author> authors = authorRepository.findAll();
+        List<Author> authors = authorRepository.findAll();
+        log.info("нашли всех авторов");
         return authors.stream().map(this::convertAuthorToDTO).collect(Collectors.toList());
-       //return authors.stream().map(author -> convertAuthorToDTO (author)).toList();
+        //return authors.stream().map(author -> convertAuthorToDTO (author)).toList();
     }
 
     public Author addNewAuthor(Author author) {
@@ -35,6 +38,7 @@ public class AuthorServiceImpl implements AuthorService {
     @Override
     public AuthorDTO getAuthorById(Long id) {
         Author author = authorRepository.findById(id).orElseThrow();
+        log.info("нашли автора по id");
         return convertAuthorToDTO(author);
     }
 
@@ -48,6 +52,7 @@ public class AuthorServiceImpl implements AuthorService {
                         .id(book.getId())
                         .build()
                 ).toList();
+        log.info("получили из автора авторДТО");
 
         return AuthorDTO.builder()
                 .books(bookDtoList)
@@ -60,12 +65,14 @@ public class AuthorServiceImpl implements AuthorService {
     @Override
     public AuthorDTO getAuthorBySurnameV1(String surname) {
         Author author = authorRepository.findAuthorBySurname(surname).orElseThrow();
+        log.info("нашли автора по фамилии вариант1");
         return convertAuthorToDTO(author);
     }
 
     @Override
     public AuthorDTO getAuthorBySurnameV2(String surname) {
         Author author = authorRepository.findAuthorBySurnameV2(surname).orElseThrow();
+        log.info("нашли автора по фамилии вариант2");
         return convertAuthorToDTO(author);
     }
 
@@ -80,6 +87,7 @@ public class AuthorServiceImpl implements AuthorService {
             }
         });
         Author author = authorRepository.findOne(specification).orElseThrow();
+        log.info("нашли автора по фамилии вариант3");
         return convertAuthorToDTO(author);
     }
 }

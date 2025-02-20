@@ -1,11 +1,11 @@
-package ru.IT.controller;
+package ru.T.controller;
 
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import ru.IT.services.AuthorServiceImpl;
+import ru.T.services.AuthorServiceImpl;
 
 @Controller
 @AllArgsConstructor

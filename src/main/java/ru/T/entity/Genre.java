@@ -1,6 +1,7 @@
-package ru.IT.entity;
+package ru.T.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 
 import java.util.Set;
@@ -19,6 +20,7 @@ public class Genre {
     private Long id;
 
     @Column(nullable = false)
+    @NotBlank(message = "заполните жанр")
     private String name;
 
     @OneToMany (mappedBy = "genre")

@@ -1,8 +1,8 @@
-package ru.IT.entity;
+package ru.T.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
-import  ru.IT.security.Role;
+import ru.T.security.Role;
 
 @Entity
 @Table
